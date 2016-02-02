@@ -1,0 +1,23 @@
+{
+  "name": "nodejs1",
+  "version": "1.0.0",
+  "description": "Test nodejs repo",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elertan/nodejs1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elertan/nodejs1/issues"
+  },
+  "homepage": "https://github.com/elertan/nodejs1#readme"
+}
