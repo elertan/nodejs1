@@ -1,3 +1,11 @@
-html
-	body
+html(ng-app='app')
+	head
+		link(rel='stylesheet', href='bootstrap/dist/css/bootstrap.min.css')
+	body(ui-router='', ng-controller='appController')
 		p This is the homepage
+		script(src='jquery/dist/jquery.min.js')
+		script(src='bootstrap/dist/js/bootstrap.min.js')
+		script(src='angular/angular.min.js')
+		script(src='angular-ui-router/release/angular-ui-router.min.js')
+		script(src='socket.io-client/socket.io.js')
+		script(src='js/setup.js')
