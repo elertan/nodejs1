@@ -18,6 +18,12 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
+// Render partials for ui router
+app.get('/p/:pageName', function (req, res) {
+	var pageName = req.params.pageName;
+	res.render('p/' + pageName);
+});
+
 io.on('connection', function (socket) {
 	console.log('New connection');
 });
