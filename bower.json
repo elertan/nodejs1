@@ -1,0 +1,30 @@
+{
+  "name": "nodejs1",
+  "description": "Test nodejs repo",
+  "main": "app.js",
+  "authors": [
+    "Elertan"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "test"
+  ],
+  "homepage": "https://github.com/elertan/nodejs1",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.2.17",
+    "bootstrap": "~3.3.6",
+    "angular": "^1.4.9",
+    "font-awesome": "^4.5.0",
+    "socket.io-client": "^1.4.5",
+    "sweetalert": "^1.1.3",
+    "sweetalert2": "^0.2.9"
+  }
+}

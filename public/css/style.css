@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+* {
+	font-family: Roboto;
+	color: #eee;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #333;
+}

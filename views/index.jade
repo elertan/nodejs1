@@ -1,6 +1,9 @@
 html(ng-app='app')
 	head
 		link(rel='stylesheet', href='bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='font-awesome/css/font-awesome.min.css')
+		link(rel='stylesheet', href='css/style.css')
+		link(rel='stylesheet', href='sweetalert2/dist/sweetalert2.css')
 		title NodeJS
 	body(ng-controller='appController')
 		div.content(ui-view='')
@@ -11,5 +14,6 @@ html(ng-app='app')
 		script(src='angular/angular.min.js')
 		script(src='angular-ui-router/release/angular-ui-router.min.js')
 		script(src='socket.io-client/socket.io.js')
+		script(src='sweetalert2/dist/sweetalert2.min.js')
 		script(src='js/setup.js')
 		script(src='js/index.js')
