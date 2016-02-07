@@ -14,8 +14,8 @@ html(ng-app='app')
 				li.nav-item
 					a.nav-link(ui-sref='/about') About
 			ul.nav.navbar-nav.navbar-right(style='margin-right: 5px;')
-				li
-					a(ui-sref='/login') Link
+				li.nav-item
+					a.nav-link(ui-sref='/login') Login
 				li.dropdown
 					a.dropdown-toggle(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Account
 						span.caret
@@ -27,7 +27,6 @@ html(ng-app='app')
 		div.container(ui-view='')
 			block content
 				h1 No content filled in yet.
-		script(src='js/views/layout.js')
 		script(src='jquery/dist/jquery.min.js')
 		script(src='bootstrap/dist/js/bootstrap.min.js')
 		script(src='angular/angular.min.js')
@@ -36,3 +35,4 @@ html(ng-app='app')
 		script(src='sweetalert2/dist/sweetalert2.min.js')
 		script(src='js/setup.js')
 		script(src='js/index.js')
+		script(src='js/views/layout.js')

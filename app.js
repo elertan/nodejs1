@@ -65,12 +65,13 @@ app.get('/p/:pageName', function (req, res) {
 		}
 	}
 
-	fs.lstat('./views/p/' + file, function (err, stats) {
+	fs.lstat('./views/p/' + file + '.jade', function (err, stats) {
+		console.log(err);
 		if (!err) {
 			// File exists
 			res.render('p/' + file);
 		} else {
-			res.render('/p/errors/404');
+			res.render('p/errors/404');
 		}
 	});
 });
