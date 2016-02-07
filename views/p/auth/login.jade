@@ -1,17 +1,14 @@
-extends ../template.jade
-
-block content
-	div.container.col-md-6.col-md-offset-3
-		h1
-			span.fa.fa-sign-in
-			| Login
-		form(id='loginForm', method='post')
-			div.form-group
-				label Email
-				input.form-control(type='text')
-			div.form-group
-				label Password
-				input.form-control(type='password')
-			div.form-group
-				input.form-control(type='submit', value='Login')
-	script(src='js/views/auth/login.js')
+div.container.col-md-6.col-md-offset-3
+	h1
+		span.fa.fa-sign-in
+		| Login
+	form(id='loginForm', method='post')
+		div.form-group
+			label Email
+			input.form-control(type='text')
+		div.form-group
+			label Password
+			input.form-control(type='password')
+		div.form-group
+			input.form-control(type='submit', value='Login')
+script(src='js/views/auth/login.js')

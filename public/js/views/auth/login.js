@@ -35,7 +35,7 @@ $(function () {
 		currentUser = data.user;
 
 		swal({
-			title: 'Welcome, ' + data.user.name,
+			title: 'Welcome, ' + currentUser.email,
 			timer: 2000,
 			type: 'success',
 			showConfirmButton: false
@@ -45,6 +45,3 @@ $(function () {
 	}
 });
 
-app.controller('loginController', function ($scope, $state) {
-
-});

@@ -4,6 +4,7 @@
   "description": "Test nodejs repo",
   "main": "app.js",
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "express": "^4.13.4"
   },
   "devDependencies": {},

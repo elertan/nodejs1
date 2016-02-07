@@ -6,9 +6,28 @@ html(ng-app='app')
 		link(rel='stylesheet', href='sweetalert2/dist/sweetalert2.css')
 		title NodeJS
 	body(ng-controller='appController')
-		div.content(ui-view='')
-			//- div(style='text-align: center;')
-			//- 	h1 Loading...
+		nav.navbar.navbar-inverse
+			a.navbar-brand NodeJS
+			ul.nav.navbar-nav
+				li.nav-item.active
+					a.nav-link(ui-sref='/') Home
+				li.nav-item
+					a.nav-link(ui-sref='/about') About
+			ul.nav.navbar-nav.navbar-right(style='margin-right: 5px;')
+				li
+					a(ui-sref='/login') Link
+				li.dropdown
+					a.dropdown-toggle(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Account
+						span.caret
+					ul.dropdown-menu
+						li
+							a Login
+						li
+							a Register
+		div.container(ui-view='')
+			block content
+				h1 No content filled in yet.
+		script(src='js/views/layout.js')
 		script(src='jquery/dist/jquery.min.js')
 		script(src='bootstrap/dist/js/bootstrap.min.js')
 		script(src='angular/angular.min.js')

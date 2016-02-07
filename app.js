@@ -2,7 +2,14 @@
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
+var fs = require('fs');
 mongoose.connect(require('./config/database').url);
+
+var db = mongoose.connection;
+db.on('error', function () {
+	console.error('Error: Are you sure mongo is running?');
+	process.exit(500);
+});
 
 var app = express();
 var http = require('http').Server(app);
@@ -13,7 +20,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var passport = require('passport');
-var PassportLocalStrategy = require('passport-local').Strategy;
+
+// Passport strategies
+passport.use(require('./passport-strategies/local'));
 
 var port = process.env.PORT || 1337;
 
@@ -35,12 +44,6 @@ app.use(passport.session());
 app.set('views', path.join(__dirname + '/views'));
 app.set('view engine', 'jade');
 
-// MongoDB Models (Move this to a different place later)
-var User = require('./models/User');
-
-// Passport strategies
-passport.use(require('./passport-strategies/local'));
-
 // Load in main page
 app.get('/', function (req, res) {
 	res.render('index');
@@ -52,7 +55,7 @@ app.get('/p/:pageName', function (req, res) {
 	var file = '';
 
 	// Replace + characters with slash characters
-	for (var x = 0; x < pageName.length; x++){
+	for (var x = 0; x < pageName.length; x++) {
 	    var c = pageName.charAt(x);
 	    
 	    if (c == '+') {
@@ -62,24 +65,18 @@ app.get('/p/:pageName', function (req, res) {
 		}
 	}
 
-	res.render('p/' + file);
+	fs.lstat('./views/p/' + file, function (err, stats) {
+		if (!err) {
+			// File exists
+			res.render('p/' + file);
+		} else {
+			res.render('/p/errors/404');
+		}
+	});
 });
 
 // Socket IO Implementation
-io.on('connection', function (socket) {
-	console.log('New connection');
-	socket.on('login', function (data, callback) {
-		var email = data.email;
-		var password = data.password;
-
-		callback({
-			// err: 'Wrong email or password',
-			user: {
-				name: 'Dennis Kievits'
-			}
-		});
-	});
-});
+io.on('connection', require('./socket/main')(io));
 
 // Listen from incoming connections
 http.listen(port, function () {
