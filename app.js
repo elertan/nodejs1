@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
 var fs = require('fs');
+var dateFormat = require('dateformat');
+
 mongoose.connect(require('./config/database').url);
 
 var db = mongoose.connection;
@@ -65,6 +67,7 @@ app.get('/p/:pageName', function (req, res) {
 		}
 	}
 
+	// Check if view exists, else render the error 404 page
 	fs.lstat('./views/p/' + file + '.jade', function (err, stats) {
 		console.log(err);
 		if (!err) {
@@ -81,7 +84,6 @@ io.on('connection', require('./socket/main')(io));
 
 // Listen from incoming connections
 http.listen(port, function () {
-	var dateFormat = require('dateformat');
 	var now = new Date();
 	console.log('Server running on port ' + port + ' at ' + dateFormat(now, 'hh:MM:ss'));
 });
