@@ -2,6 +2,14 @@ var User = require('../models/User');
 
 module.exports = function (io, socket) {
 	return function (data, callback) {
+
+		// Block request from already logged in users
+		if (socket.handshake.session.user != null) {
+			callback({
+				err: 'You are already logged in'
+			});
+		}
+
 		var email = data.email;
 		var password = data.password;
 
@@ -22,7 +30,7 @@ module.exports = function (io, socket) {
 				return;
 			}
 
-			console.log(user);
+			socket.handshake.session.user = user.local;
 
 			callback({
 				user: user.local

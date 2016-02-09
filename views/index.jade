@@ -14,16 +14,17 @@ html(ng-app='app')
 				li.nav-item
 					a.nav-link(ui-sref='/about') About
 			ul.nav.navbar-nav.navbar-right(style='margin-right: 5px;')
-				li.nav-item
-					a.nav-link(ui-sref='/login') Login
 				li.dropdown
-					a.dropdown-toggle(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Account
+					a.dropdown-toggle(id='accountDropdown', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Account
 						span.caret
 					ul.dropdown-menu
 						li
-							a Login
+							a(ui-sref='/login') Login
 						li
-							a Register
+							a(ui-sref='/register') Register
+						li.divider(role='separator')
+						li
+							a Logout
 		div.container(ui-view='')
 			block content
 				h1 No content filled in yet.

@@ -4,6 +4,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var fs = require('fs');
 var dateFormat = require('dateformat');
+var sharedSession = require('express-socket.io-session');
 
 mongoose.connect(require('./config/database').url);
 
@@ -32,14 +33,16 @@ var port = process.env.PORT || 1337;
 app.use(express.static('bower_components'));
 app.use(express.static('public'));
 
+var sessionObj = session({ 
+	secret: 'rVgTP3iQRKYtKK8ydbqx',
+	resave: true,
+	saveUninitialized: true
+});
+
 // modules
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(session({ 
-	secret: 'secret',
-	resave: false,
-	saveUninitialized: false
-}));
+app.use(sessionObj);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -79,6 +82,8 @@ app.get('/p/:pageName', function (req, res) {
 	});
 });
 
+// Use io session
+io.use(sharedSession(sessionObj));
 // Socket IO Implementation
 io.on('connection', require('./socket/main')(io));
 

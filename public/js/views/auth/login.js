@@ -21,7 +21,6 @@ $(function () {
 	});
 
 	function loginFormCallback(data) {
-		
 		// Delay each login attempt by 500ms
 		setTimeout(function () {
 			pendingLogin = false;
